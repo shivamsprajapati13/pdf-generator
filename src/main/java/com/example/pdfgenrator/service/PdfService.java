@@ -1,7 +1,5 @@
 package com.example.pdfgenrator.service;
 
-
-import com.example.pdfgenrator.dto.InvoiceRequest;
 import com.example.pdfgenrator.model.InvoiceData;
 import com.example.pdfgenrator.util.FileStore;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,7 +16,6 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-
 public class PdfService {
 
 
@@ -56,7 +53,9 @@ public class PdfService {
         return new PdfResult(id, pdfBytes);
     }
 
-    public byte[] load(String id) throws IOException { return store.load(id); }
+    public byte[] load(String id) throws IOException {
+        return store.load(id);
+    }
 
     public record PdfResult(String id, byte[] bytes) {}
 }

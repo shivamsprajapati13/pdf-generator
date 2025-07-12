@@ -2,30 +2,63 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <title>Invoice</title>
     <style>
-        body { font-family: sans-serif; }
-
-        table { width:100%; border-collapse:collapse; }
-        th, td { border:1px solid #999; padding:6px; text-align:left; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .no-border {
+            border: none;
+        }
     </style>
 </head>
 <body>
-<h1>Invoice [[${invoiceNumber}]]</h1>
-
-<p><b>Customer:</b> [[${customerName}]]</p>
 
 <table>
-    <thead><tr><th>#</th><th>Description</th></tr></thead>
+    <tr>
+        <td>
+            <strong>Seller:</strong> <span th:text="${seller}"></span><br/>
+            <strong>GSTIN:</strong> <span th:text="${sellerGstin}"></span><br/>
+            <strong>Address:</strong> <span th:text="${sellerAddress}"></span>
+        </td>
+        <td >
+            <strong>Buyer:</strong> <span th:text="${buyer}"></span><br/>
+            <strong>GSTIN:</strong> <span th:text="${buyerGstin}"></span><br/>
+            <strong>Address:</strong> <span th:text="${buyerAddress}"></span>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Rate</th>
+        <th>Amount</th>
+    </tr>
+    </thead>
     <tbody>
-    <tr th:each="item,iterStat : ${items}">
-        <td th:text="${iterStat.index + 1}"></td>
-        <td th:text="${item}"></td>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.name}">Item Name</td>
+        <td th:text="${item.quantity}">Quantity</td>
+        <td th:text="${item.rate}">Rate</td>
+        <td th:text="${item.amount}">Amount</td>
     </tr>
     </tbody>
 </table>
-
-<p style="text-align:right;font-size:1.1em">
-    <b>Total:</b> [[${total}]]
-</p>
 </body>
 </html>

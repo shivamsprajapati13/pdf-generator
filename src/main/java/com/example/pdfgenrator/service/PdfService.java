@@ -2,6 +2,7 @@ package com.example.pdfgenrator.service;
 
 
 import com.example.pdfgenrator.dto.InvoiceRequest;
+import com.example.pdfgenrator.model.InvoiceData;
 import com.example.pdfgenrator.util.FileStore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
@@ -30,7 +31,7 @@ public class PdfService {
     @Autowired
     private FileStore      store;
 
-    public PdfResult generateOrLoad(@Valid InvoiceRequest req) throws Exception {
+    public PdfResult generateOrLoad(@Valid InvoiceData req) throws Exception {
 
         byte[] json = mapper.writeValueAsBytes(req);
         String id = store.idFor(json);

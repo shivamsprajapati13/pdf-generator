@@ -3,6 +3,7 @@ package com.example.pdfgenrator.controller;
 
 
 import com.example.pdfgenrator.dto.InvoiceRequest;
+import com.example.pdfgenrator.model.InvoiceData;
 import com.example.pdfgenrator.service.PdfService;
 import jakarta.validation.Valid;
 
@@ -19,7 +20,7 @@ public class PdfController {
 
 
     @PostMapping
-    public ResponseEntity<byte[]> create(@Valid @RequestBody InvoiceRequest req) throws Exception {
+    public ResponseEntity<byte[]> create(@Valid @RequestBody InvoiceData req) throws Exception {
 
         var result = service.generateOrLoad(req);
 

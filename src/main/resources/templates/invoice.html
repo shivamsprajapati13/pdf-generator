@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body { font-family: sans-serif; }
+
+        table { width:100%; border-collapse:collapse; }
+        th, td { border:1px solid #999; padding:6px; text-align:left; }
+    </style>
+</head>
+<body>
+<h1>Invoice [[${invoiceNumber}]]</h1>
+
+<p><b>Customer:</b> [[${customerName}]]</p>
+
+<table>
+    <thead><tr><th>#</th><th>Description</th></tr></thead>
+    <tbody>
+    <tr th:each="item,iterStat : ${items}">
+        <td th:text="${iterStat.index + 1}"></td>
+        <td th:text="${item}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<p style="text-align:right;font-size:1.1em">
+    <b>Total:</b> [[${total}]]
+</p>
+</body>
+</html>
